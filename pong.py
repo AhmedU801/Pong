@@ -52,6 +52,7 @@ while top_of_screen > -300:
     line.penup()
     top_of_screen -= 10
     line.goto(0, top_of_screen)
+line.hideturtle()
 
 # Score
 score = turtle.Turtle()
