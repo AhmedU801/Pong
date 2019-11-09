@@ -35,8 +35,23 @@ ball.shape('square')
 ball.color('white')
 ball.penup()
 ball.goto(0, 0)
-ball.dx = -.06
-ball.dy = -.06
+ball.dx = -.1
+ball.dy = -.1
+
+# Middle Line
+line = turtle.Turtle()
+line.speed(0)
+line.color('white')
+line.penup()
+top_of_screen = 300
+line.goto(0, top_of_screen)
+while top_of_screen > -300:
+    line.pendown()
+    top_of_screen -= 10
+    line.goto(0, top_of_screen)
+    line.penup()
+    top_of_screen -= 10
+    line.goto(0, top_of_screen)
 
 # Score
 score = turtle.Turtle()
@@ -44,8 +59,8 @@ score.speed(0)
 score.color('white')
 score.penup()
 score.hideturtle()
-score.goto(0, 260)
-score.write("Player A: 0 | Player B: 0", align='center', font=('Courier', 24, 'normal'))
+score.goto(0, 150)
+score.write("{}         {}".format(score_a, score_b), align='center', font=('Courier', 50, 'normal'))
 
 
 def paddle_a_up():
@@ -77,7 +92,6 @@ wn.onkeypress(paddle_a_up, "w")
 wn.onkeypress(paddle_a_down, "s")
 wn.onkeypress(paddle_b_up, "Up")
 wn.onkeypress(paddle_b_down, "Down")
-
 
 # Main game loop
 while True:
@@ -117,14 +131,16 @@ while True:
         ball.dx *= -1
         score_a += 1
         score.clear()
-        score.write("Player A: {} | Player B: {}".format(score_a, score_b), align='center', font=('Courier', 24, 'normal'))
+        score.write("{}         {}".format(score_a, score_b), align='center',
+                    font=('Courier', 50, 'normal'))
 
     if ball.xcor() < -390:
         ball.goto(0, 0)
         ball.dx *= -1
         score_b += 1
         score.clear()
-        score.write("Player A: {} | Player B: {}".format(score_a, score_b), align='center', font=('Courier', 24, 'normal'))
+        score.write("{}         {}".format(score_a, score_b), align='center',
+                    font=('Courier', 50, 'normal'))
 
     # Collisions
     if (340 < ball.xcor() < 350) and (paddle_b.ycor() + 55 > ball.ycor() > paddle_b.ycor() - 55):
