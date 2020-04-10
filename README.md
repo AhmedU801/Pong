@@ -1,7 +1,7 @@
 # Pong
 A game of Pong written in Python
 
-![Pong Demo](https://github.com/AhmedU801/Pong/blob/master/pong_demo.PNG)
+![Pong Demo](pong_demo.gif)
 
 I built this game on top of the turtle module.
 I was able to learn different functionalities
